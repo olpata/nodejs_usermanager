@@ -1,0 +1,14 @@
+{
+  "name": "nodejs_usermanager",
+  "version": "1.0.0",
+  "description": "simple login/register screens, adim screen for managing users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ashekotilov",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.16.2"
+  }
+}
