@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="sqlite_jdbc-1617a07346e-3c9ecb4dd2f5a1f6" provider="generic" driver="sqlite_jdbc" name="SQLite - database.sqlite" save-password="true" show-system-objects="true" read-only="false">
+		<connection server="" database="G:\pr\nodejs_usermanager\app\database.sqlite" url="jdbc:sqlite:G:\pr\nodejs_usermanager\app\database.sqlite" type="dev"/>
+	</data-source>
+	<filters/>
+</data-sources>
