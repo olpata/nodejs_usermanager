@@ -2,9 +2,46 @@ const express = require('express');
 const app = express();
                                      // <=
 var Promise = require("bluebird");
-const port =  3000;
+var port     = process.env.PORT ||  3000;
 
-app.get('/', (req, res) => res.send('Hello World!'));
+//TODO - check how work
+//mongoose.connect(configDB.url); 
+
+
+//var mongoose = require('mongoose');
+var passport = require('passport');
+var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+
+app.use(morgan('dev'));
+app.use(cookieParser());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.set('view engine', 'ejs'); 
+app.set('views', '../views');
+
+app.use(session({secret: 'xxxxxxilovescotchscotchyscotchscotch', 
+    saveUninitialized: true,
+    resave: true}));
+
+
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
+var flash    = require('connect-flash');
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+//routes ======================================================================
+require('./routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+// launch ======================================================================
+//app.listen(port);
+//console.log('The magic happens on port ' + port);
+
 
 
 //var sqlite3 = require('sqlite3').verbose();
