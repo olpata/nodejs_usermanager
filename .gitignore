@@ -3,3 +3,4 @@ node_modules/
 temp_other/
 app/database.sqlite
 database.sqlite
+,env
