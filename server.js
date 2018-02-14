@@ -25,7 +25,7 @@ var models = require("./app/models");
 
 var authRoute = require('./app/routes/auth.js')(app,passport, models);
 //load passport strategies
-require('./config/passport/passport.js')(passport, models.user);
+require('./config/passport/passport.js')(passport, models);
 
 
  //Sync Database

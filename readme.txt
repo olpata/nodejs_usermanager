@@ -7,7 +7,6 @@ https://code.tutsplus.com/ru/tutorials/using-passport-with-sequelize-and-mysql--
 **TODO - check migration and use install
 **TODO - check efl views and add bootstrap to view hbs
 **TODO - move salt to table and generate for each user.
-**TODO - add writing all login atteps and status (fail / ok)
 
 
 

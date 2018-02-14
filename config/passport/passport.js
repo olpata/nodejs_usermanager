@@ -1,6 +1,7 @@
 var bCrypt = require('bcrypt-nodejs');
-module.exports = function (passport, user) {
-    var User = user;
+module.exports = function (passport, models) {
+    var User = models.user;
+    var LogLogin  = models.loglogin;
     var LocalStrategy = require('passport-local').Strategy;
     passport.use('local-signup', new LocalStrategy(
         {
@@ -56,6 +57,16 @@ module.exports = function (passport, user) {
         });
     });
     //LOCAL SIGNIN
+    var logSigninAttempt = function(req,data){
+            data.login_date =  new Date();
+            data.login_ip = req.connection.remoteAddress
+            console.log(`log attempt:id=${data.id} status=${data.status} ip=${data.login_ip} login_date=${data.login_date} `);
+                    LogLogin.create(data).then(function (newLogRec, created) {
+                        if (!newLogRec) {
+                            console.log('error on create LogLogin record');
+                        }
+                    });
+    }
     passport.use('local-signin', new LocalStrategy(
         {
             // by default, local strategy uses username and password, we will override with email
@@ -64,7 +75,7 @@ module.exports = function (passport, user) {
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function (req, email, password, done) {
-            var User = user;
+            var User = models.user;
             var isValidPassword = function (userpass, password) {
                 return bCrypt.compareSync(password, userpass);
             }
@@ -74,19 +85,23 @@ module.exports = function (passport, user) {
                 }
             }).then(function (user) {
                 if (!user) {
+                    logSigninAttempt(req,{id: 0,status:'fail: wrong email'});
                     return done(null, false, {
                         message: 'Email does not exist'
                     });
                 }
                 if (!isValidPassword(user.password, password)) {
+                    logSigninAttempt(req,{user_id: user.id,result:'fail: wrong password'});
                     return done(null, false, {
                         message: 'Incorrect password.'
                     });
                 }
                 var userinfo = user.get();
+                logSigninAttempt(req,{user_id: user.id,result:'ok'});
                 return done(null, userinfo);
             }).catch(function (err) {
                 console.log("Error:", err);
+                logSigninAttempt({user_id: 0,result:`fail: ${err}`});
                 return done(null, false, {
                     message: 'Something went wrong with your Signin'
                 });
