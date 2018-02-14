@@ -6,10 +6,14 @@ https://code.tutsplus.com/ru/tutorials/using-passport-with-sequelize-and-mysql--
 **TODO - check and update - some packages not using - efj,promise,sqlite?
 **TODO - check migration and use install
 **TODO - check efl views and add bootstrap to view hbs
+**TODO - move salt to table and generate for each user.
+**TODO - add writing all login atteps and status (fail / ok)
+
+
+
+**INFO use SQLiteStudio for manage db
 **INFO - on git clone need create file ".env" (create file .env.example and in cmd "copy .env.example .env").
     Add line in .env "NODE_ENV = 'development'"
-**TODO - move salt to table and generate for each user.
-
 **INFO to init nodejs enviroment:
 **INFO to import in eclipse:
 npm install express-generator -g

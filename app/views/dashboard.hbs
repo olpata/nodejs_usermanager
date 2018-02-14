@@ -7,8 +7,25 @@
  
 <body>
     <h2>Dashboard</h2>
-    <h5>Hurray! you are logged in.</h5>
- 
+    <h5>Hurray!  {{user.email}} are logged in.</h5>
+    <p>id: {{user.id}}</p>
+    <p>first name:  {{user.firstname}}</p>
+    <p>last name:  {{user.lastname}}</p>
+    <p>email:  {{user.email}}</p>
+    <p>about:  {{user.about}}</p>
+    <p>status:  {{user.status}}</p>
+    <table class="table" border="1">
+            <tbody>
+                {{#objects}}
+                <tr>
+                        <td>{{user_id}}</td>
+                        <td>{{login_sdate}}</td>
+                        <td>{{login_ip}}</td>
+                        <td>{{result}}</td>
+                </tr>
+                {{/objects}}
+            </tbody>
+        </table>
 </body>
  
 </html>
