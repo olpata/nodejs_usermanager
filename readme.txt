@@ -6,7 +6,7 @@ https://code.tutsplus.com/ru/tutorials/using-passport-with-sequelize-and-mysql--
 **TODO - check and update - some packages not using - efj,promise,sqlite?
 **TODO - check migration and use install
 **TODO - check efl views and add bootstrap to view hbs
-
+**TODO - use flag remember me to auth by cookie
 
 
 

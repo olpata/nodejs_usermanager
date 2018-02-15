@@ -13,6 +13,10 @@ app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}))
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
+
+//add assets
+app.use(express.static(__dirname + '/public'));
+
 //For Handlebars
 app.set('views', './app/views')
 app.engine('hbs', exphbs({
