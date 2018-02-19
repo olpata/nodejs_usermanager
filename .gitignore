@@ -5,3 +5,4 @@ app/database.sqlite
 database.sqlite
 ,env
 app/views/bak/
+bak_views_js/

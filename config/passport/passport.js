@@ -26,7 +26,7 @@ module.exports = function (passport, models) {
             var generateHash = function (password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
-            console.log(util.inspect(req.body, false, null));
+            //console.log(util.inspect(req.body, false, null));
             User.findOne({
                 where: {
                     email: email

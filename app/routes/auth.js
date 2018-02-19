@@ -5,6 +5,7 @@ module.exports = function(app,passport,models) {
     app.get('/signup', authController.signup);
     app.get('/signin', authController.signin);
     app.get('/dashboard',isLoggedIn, authController.dashboard);
+    app.get('/gameview',isLoggedIn, authController.gameview);
     app.get('/logout',authController.logout);
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/dashboard',
@@ -21,7 +22,7 @@ module.exports = function(app,passport,models) {
      
     };
     app.post('/signin', passport.authenticate('local-signin', {
-        successRedirect: '/dashboard',
+        successRedirect: '/gameview',
  
         failureRedirect: '/signin'
     }
