@@ -3,11 +3,17 @@
  
 <head>
     <title>Passport with Sequelize</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap core CSS -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="./assets/css/signin.css" rel="stylesheet">
+   
+   
+
+
+  
 </head>
  
 <body>
@@ -23,44 +29,37 @@
             <p>hero name: {{hero.stats.name}}</p>
            
             <div class="row">
-                <div class="col-sm-3"> health:  {{hero.stats.health}}  </div>
-                <div class="progress col-sm-8">
-                        <div class="progress-bar progress-bar-success" role="progressbar"style="width:{{hero.stats.health}}%">
+                <div class="col-sm-4"> health:  {{hero.stats.health}} / {{hero.stats.health_max}}  </div>
+                <div class="progress col-sm-7">
+                        <div class="progress-bar progress-bar-success" role="progressbar"style="width:{{view.health_perc}}%">
                 </div>  </div>
 
-                <div class="col-sm-3"> sanity:  {{hero.stats.sanity}}  </div>
-                <div class="progress col-sm-8">
-                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{hero.stats.sanity}}%">                    
+                <div class="col-sm-4"> sanity:  {{hero.stats.sanity}} / {{hero.stats.sanity_max}}  </div>
+                <div class="progress col-sm-7">
+                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{view.sanity_perc}}%">                    
                 </div>  </div>
 
 
 
-
-                <div class="col-sm-3"> comb:  {{hero.stats.combat}}  </div>
-                <div class="progress col-sm-8">
-                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{hero.stats.combat}}%">                    
-                </div>  </div>
-
-                <div class="col-sm-3"> dex :  {{hero.stats.dextery}}  </div>
-                <div class="progress col-sm-8">
-                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{hero.stats.dextery}}%">                    
-                </div>  </div>
-
-                <div class="col-sm-3"> int :  {{hero.stats.intelegence}}  </div>
-                <div class="progress col-sm-8">
-                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{hero.stats.intelegence}}%">                    
-                </div>  </div>
-
-                <div class="col-sm-3"> will:  {{hero.stats.will}}  </div>
-                <div class="progress col-sm-8">
-                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{hero.stats.will}}%">                    
-                </div>  </div>
+                <div class="col-sm-12"> ----------  </div>
+                <div class="col-sm-12"> comb:  {{hero.stats.combat}}  </div>
+                <div class="col-sm-12"> dex :  {{hero.stats.dextery}}  </div>
+                <div class="col-sm-12"> int :  {{hero.stats.intelegence}}  </div>
+                <div class="col-sm-12"> will:  {{hero.stats.will}}  </div>
            </div>   
 
             <p>other stats:  {{hero.stats}}</p>
         </div>
         <div class="col-sm-12" style="background-color:lightgray;">
+             <div class="row">
+                {{#hero.items}}
+                <div class="col-sm-4" >
+                    <img  class="img-thumbnail" src="{{img}}"  data-toggle="tooltip"  data-html="true"  title="{{tooltip}}" >
+                </div>
+                {{/hero.items}}
+            </div>
             <p>your items:  {{hero.items}}</p>
+            
         </div>
       </div>
     </div>
@@ -71,6 +70,13 @@
     </div>
   </div>
 </div>
+
+
+    <script src="./assets/js/jquery-3.3.1.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+     <script>
+$("[data-toggle=tooltip").tooltip();
+    </script>
 
 
 </body>

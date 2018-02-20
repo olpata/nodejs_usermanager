@@ -22,7 +22,7 @@ module.exports = [
     },
     {
         name:"necronomicon",
-        img:"./assets/items/rope.png",
+        img:"./assets/items/spellbook.png",
         desc:"Strange matterial, which looks like flesh. Strange stories?which looks like spells.",
         rarity:5,
         effect:"can reroll test result. lose 1 sanity."

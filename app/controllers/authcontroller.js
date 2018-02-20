@@ -72,9 +72,12 @@ exports.gameview = function(req, res) {
             //console.log(`stats :/ ${JSON.stringify(stats)}`);
             var data = {
                  hero: {items:items,stats:stats,eventPool:eventPool,goals:goals},
-                 user: this_user
+                 user: this_user,
+                 view:{health_perc:stats.health*100/stats.health_max,sanity_perc:stats.sanity*100/stats.sanity_max}
              };
-
+             data.hero.items.forEach(function(item){
+                item.tooltip = `<b>${item.name}</b> <p>${item.effect}</p> <i>${item.desc}</i>`;
+             });
              console.log(`stats: / ${JSON.stringify(data.hero.stats)}`);
              console.log(`items: / ${JSON.stringify(data.hero.items)}`);
              console.log(`events: / ${JSON.stringify(data.hero.eventPool)}`);
