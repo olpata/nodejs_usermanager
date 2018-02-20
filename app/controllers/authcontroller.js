@@ -69,8 +69,9 @@ exports.gameview = function(req, res) {
             var eventPool = require('../testdata/testevents');
             var goals  = require('../testdata/testgoals');
             
+            //console.log(`stats :/ ${JSON.stringify(stats)}`);
             var data = {
-                 hero: {name:"omgname",items:items,stats:stats,eventPool:eventPool,goals:goals},
+                 hero: {items:items,stats:stats,eventPool:eventPool,goals:goals},
                  user: this_user
              };
 

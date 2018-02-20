@@ -10,7 +10,7 @@ https://code.tutsplus.com/ru/tutorials/using-passport-with-sequelize-and-mysql--
 -works singup and singin
 -loging attemps of login/login create
 
-
+**TODO - move to angular or react from hbs - prooblem with small transformation input data for view-page
 **TODO - check and update - some packages not using - efj,promise,sqlite?
 **TODO - check migration and use install
 **TODO - use flag remember me to auth by cookie

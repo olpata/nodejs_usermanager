@@ -2,6 +2,10 @@
 module.exports = function(app,passport,models) {
     var authController = require('../controllers/authcontroller.js');
     authController.init(models);
+    app.get('/', function (req, res) {
+        res.redirect('/gameview');
+    });
+
     app.get('/signup', authController.signup);
     app.get('/signin', authController.signin);
     app.get('/dashboard',isLoggedIn, authController.dashboard);
