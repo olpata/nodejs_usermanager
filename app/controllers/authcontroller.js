@@ -70,11 +70,16 @@ exports.gameview = function(req, res) {
             var goals  = require('../testdata/testgoals');
             
             //console.log(`stats :/ ${JSON.stringify(stats)}`);
+            //TODO - add function to form crisis and hero_after fields
             var data = {
                  hero: {items:items,stats:stats,eventPool:eventPool,goals:goals},
                  user: this_user,
-                 view:{health_perc:stats.health*100/stats.health_max,sanity_perc:stats.sanity*100/stats.sanity_max}
+                 view:{health_perc:stats.health*100/stats.health_max,sanity_perc:stats.sanity*100/stats.sanity_max},
+                 crisis:{name:"Find a shiny thing",img:"./assets/events/question.png",desc:"You see some thing shiny in a mud. You try to take from dirt.",chalenge:{type:"dex",diff_level:0,curr_level:4,dice_count:1,roll_results:3,ispass:true},post_chalenge:{desc:'challenge success. You get item knife.'} }
+                 ,hero_after: {items:items.slice(),stats:stats,eventPool:eventPool,goals:goals}
              };
+             data.hero_after.items.push(data.hero_after.items[0]);
+
              data.hero.items.forEach(function(item){
                 item.tooltip = `<b>${item.name}</b> <p>${item.effect}</p> <i>${item.desc}</i>`;
              });

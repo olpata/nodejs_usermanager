@@ -64,9 +64,37 @@
       </div>
     </div>
     <div class="col-sm-8" style="background-color:lavenderblush;">
-        <p>current events</p>
-        <p>your goals:  {{hero.goals}}</p>
-        <p>your events pool:  {{hero.eventsPool}}</p>
+         <div class="row">
+            <div class="col-sm-4" id="info-crisis-text" style="background-color:lightcyan;">
+                <div id="info-crisis-start">
+                    <p>{{crisis.name}}</p>
+                    <p>{{crisis.desc}}</p>
+                    <button id="btn-crisis-challenge" style="background-color:lavenderblush;">challenge</button>
+                </div>
+                <div id="info-crisis-post" style="display:none;">
+                    <p>{{crisis.post_chalenge.desc}}</p>
+                    <button id="btn-crisis-ok">ok</button>
+                </div>
+               
+
+                <script>
+
+                </script>
+            </div>
+            <div class="col-sm-8" id="info-crisis-img" style="background-color:rgb(228, 255, 224);">
+                  <img  class="img" src="{{crisis.img}}" style="width:100%;" >
+            </div>
+
+             <div class="col-sm-12" id="info-actions-list" style="display:none;">
+                    <p>current events</p>
+                    <p>your goals:  {{hero.goals}}</p>
+                    <p>your events pool:  {{hero.eventsPool}}</p>
+                    <button id="btn-actions-do-1">do 1</button>
+                    <button id="btn-actions-do-2">do 2</button>
+                    <button id="btn-actions-do-3">do 3</button>
+                </div>
+        </div>
+
     </div>
   </div>
 </div>
@@ -75,7 +103,21 @@
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
      <script>
-$("[data-toggle=tooltip").tooltip();
+$(document).ready(function(){
+    $("[data-toggle=tooltip").tooltip();
+
+    $("#btn-crisis-challenge").click(function(){
+        $("#info-crisis-post").show(500);
+         $("#btn-crisis-challenge").attr("disabled", true); 
+          <!-- TODO - add effects of challenge(change stats, items list etc) -->
+    });
+    $("#btn-crisis-ok").click(function(){
+        $("#btn-crisis-ok").hide(500);
+        $("#info-crisis-text").hide(500);
+        $("#info-crisis-img").hide(500);
+        $("#info-actions-list").show(500);
+    });
+});
     </script>
 
 
