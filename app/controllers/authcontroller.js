@@ -1,5 +1,6 @@
 var moment = require('moment');
-var exports = module.exports = {}
+var exports = module.exports = {};
+var crisisPrepare = require('./crisiscontroller').crisisPrepare;
 var models;
 exports.init = function(db_data){
     models = db_data;
@@ -74,19 +75,23 @@ exports.gameview = function(req, res) {
             var data = {
                  hero: {items:items,stats:stats,eventPool:eventPool,goals:goals},
                  user: this_user,
-                 view:{health_perc:stats.health*100/stats.health_max,sanity_perc:stats.sanity*100/stats.sanity_max},
-                 crisis:{name:"Find a shiny thing",img:"./assets/events/question.png",desc:"You see some thing shiny in a mud. You try to take from dirt.",chalenge:{type:"dex",diff_level:0,curr_level:4,dice_count:1,roll_results:3,ispass:true},post_chalenge:{desc:'challenge success. You get item knife.'} }
-                 ,hero_after: {items:items.slice(),stats:stats,eventPool:eventPool,goals:goals}
+                 view:{health_perc:stats.health*100/stats.health_max,sanity_perc:stats.sanity*100/stats.sanity_max}
+//                 ,crisis:{name:"Find a shiny thing",img:"./assets/events/question.png",desc:"You see some thing shiny in a mud. You try to take from dirt.",post_challenge:{type:"dex",diff_level:0,curr_level:4,dice_count:1,roll_results:3,ispass:true},post_challenge:{desc:'challenge success. You get item knife.'} }
+//                 ,hero_after: {items:items.slice(),stats:stats,eventPool:eventPool,goals:goals}
              };
-             data.hero_after.items.push(data.hero_after.items[0]);
+//             data.hero_after.items.push(data.hero_after.items[0]);
+
+             [data.crisis ,data.hero_after] =  crisisPrepare(data.hero.eventPool[0],data.hero);
 
              data.hero.items.forEach(function(item){
                 item.tooltip = `<b>${item.name}</b> <p>${item.effect}</p> <i>${item.desc}</i>`;
              });
-             console.log(`stats: / ${JSON.stringify(data.hero.stats)}`);
-             console.log(`items: / ${JSON.stringify(data.hero.items)}`);
-             console.log(`events: / ${JSON.stringify(data.hero.eventPool)}`);
-             console.log(`goals: / ${JSON.stringify(data.hero.goals)}`);
+             //console.log(`stats: / ${JSON.stringify(data.hero.stats)}`);
+             //console.log(`items: / ${JSON.stringify(data.hero.items)}`);
+             //console.log(`events: / ${JSON.stringify(data.hero.eventPool)}`);
+             //console.log(`goals: / ${JSON.stringify(data.hero.goals)}`);
+             console.log(`crisis: / ${JSON.stringify(data.crisis)}`);
+             console.log(`hero_after: / ${JSON.stringify(data.hero_after)}`);
              res.render('gameview',data);
          };
      });
