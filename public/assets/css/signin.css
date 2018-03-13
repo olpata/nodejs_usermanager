@@ -43,3 +43,49 @@ body {
 /* boostrap tooltips 
 */
 .tooltip > .tooltip-inner {background-color: #f00;text-align: left;}
+
+
+
+.img-goal {
+  margin-bottom: -4px;
+  transition: .3s all;
+  width: 100%;
+}
+
+.img-goal-overlay {
+  text-align: center;
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;  
+  transition: .3s all;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+
+}
+/*
+.goal-container:hover > .img-goal-overlay:hover{
+  opacity: 1;
+}
+.goal-container:hover > .img-goal:hover{
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+}
+*/
+ .img-goal-overlay:hover{
+  opacity: 1;
+}
+ .img-goal:hover {
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+}
+
+.area-hero-used {
+  opacity: 1;
+  
+}
+.img-goal-overlay.over{
+  opacity: 1;
+}

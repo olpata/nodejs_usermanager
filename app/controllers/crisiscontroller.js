@@ -30,7 +30,7 @@ module.exports.crisisPrepare = function(event,hero,crisis,hero_after) {
     console.log(`xx = ${JSON.stringify(event)}`);
     var thisChallenge = event.challenges[0];
     crisis.challenge.type = thisChallenge.type;
-    crisis.post_challenge.desc += `You do test of ${crisis.challenge.type}.`+nl;
+    crisis.post_challenge.desc += `<p>You do test of ${crisis.challenge.type}.</p>`+nl;
     crisis.challenge.diff_level = thisChallenge.diff;
     crisis.challenge.dice_count = 1;
     crisis.challenge.curr_level = challenge_hero_stat+challenge_items_stat;
@@ -38,7 +38,7 @@ module.exports.crisisPrepare = function(event,hero,crisis,hero_after) {
     
     challenge_actual = crisis.challenge.roll_results+crisis.challenge.curr_level;
     challenge_need = 6+crisis.challenge.diff_level;
-    crisis.post_challenge.desc += `You roll challenge_actual of challenge_need.`+nl;
+    crisis.post_challenge.desc += `<p>You roll challenge_actual of challenge_need.</p>`+nl;
     if (challenge_actual > challenge_need)
     {
         //success

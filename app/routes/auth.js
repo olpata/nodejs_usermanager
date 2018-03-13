@@ -11,6 +11,9 @@ module.exports = function(app,passport,models) {
     app.get('/dashboard',isLoggedIn, authController.dashboard);
     app.get('/gameview',isLoggedIn, authController.gameview);
     app.get('/logout',authController.logout);
+
+    app.post('/gameview',isLoggedIn, authController.gameviewPost);
+
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/dashboard',
         failureRedirect: '/signup'
